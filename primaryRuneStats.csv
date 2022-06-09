@@ -1,0 +1,14 @@
+Stat;BaseValue
+atk;6.0
+aoe;3.0
+as;1.0
+bonusgold;10.0
+critdmg;5.0
+def;6.0
+hp;6.0
+ultatk;10.0
+freezetime;2.0
+stuntime;2.0
+burntime;2.0
+poisontime;2.0
+ultreload;2.0
