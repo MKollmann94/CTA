@@ -1,9 +1,21 @@
 module CTA
 
-export getStats, getRuneStats
+##########################################################################################
+
+#### 	REQUIREMENTS
+
+##########################################################################################
 
 include("HeroStats.jl")
 include("RuneStats.jl")
 include("GuildwarScores.jl")
+
+##########################################################################################
+
+#### 	EXPORTS
+
+##########################################################################################
+
+export getStats, getRuneStats, getNamesAndScores, sortIntoFile, extractFolder
 
 end

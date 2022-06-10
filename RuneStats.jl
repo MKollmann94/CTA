@@ -1,14 +1,35 @@
+##########################################################################################
+
+#### 	REQUIREMENTS
+
+##########################################################################################
+
 using CSV
 using DataFrames
 
+##########################################################################################
+
+#### 	EXPORTS
+
+##########################################################################################
+
 export getRuneStats
+
+##########################################################################################
+
+#### 	GLOBAL CONSTANTS
+
+##########################################################################################
 
 #absolut path to primaryRuneStats.csv
 const SPRIMARYRUNESPATH = "primaryRuneStats.csv"
 #absolute path to secondaryRuneStats.csv
 const SSECONDARYRUNESPATH = "secondaryRuneStats.csv"
 
-
+#=
+    returns the stats of a rune with the given stars, levels
+    and secondaries
+=#
 function getRuneStats(primaryName, stars, level, first = "", second = "", third = "", fourth = "")
     dfPrimaryStats = dfStats = CSV.read(string(@__DIR__, "\\", SPRIMARYRUNESPATH), delim = ";", DataFrame)
     dfSecondaryStats = dfStats = CSV.read(string(@__DIR__, "\\", SSECONDARYRUNESPATH), delim = ";", DataFrame)
@@ -81,7 +102,9 @@ function getRuneStats(primaryName, stars, level, first = "", second = "", third 
     end
 end
 
-
+#=
+    doubles the first n elements of a given array
+=#
 function doubleFirstnElements!(arrayToDouble, n)
     n = min(size(arrayToDouble)[1], n)
     for ind in 1 : n
@@ -89,7 +112,10 @@ function doubleFirstnElements!(arrayToDouble, n)
     end
 end
 
-
+#=
+    doubles the secondary stats of a rune depending on stars
+    and level of the rune
+=#
 function getSecondaryStats(values, stars, level)
     if stars == 6
         if level >= 25

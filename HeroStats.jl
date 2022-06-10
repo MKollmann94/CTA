@@ -1,12 +1,32 @@
+##########################################################################################
+
+#### 	REQUIREMENTS
+
+##########################################################################################
+
 using CSV
 using DataFrames
 using Formatting
 
+##########################################################################################
+
+#### 	EXPORTS
+
+##########################################################################################
+
 export getStats
+
+##########################################################################################
+
+#### 	GLOBAL CONSTANTS
+
+##########################################################################################
 
 const SSHEETPATH = "baseStats.csv"
 
-
+#=
+    returns the base stats of a given hero
+=#
 function getBaseStats(hero)
     dfStats = CSV.read(string(@__DIR__, "\\", SSHEETPATH), delim = ";", DataFrame)
     HeroNames = dfStats.Name
@@ -17,6 +37,11 @@ function getBaseStats(hero)
     return dfStats[ind, :]
 end
 
+
+#=
+    returns the total stats of a given hero, taking into account
+    stars, awakens and buffs from runes, teambuffs or seasons
+=#
 function getStats(hero, stars, awakens; hp = 0, tbHP = 0, shield = 0, tbShield = 0, atk = 0, tbAtk = 0, range = 0, totalbuff = 0)
     dfBaseStats = getBaseStats(hero)
 
